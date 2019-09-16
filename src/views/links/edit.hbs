@@ -3,19 +3,19 @@
         <div class="col-md-4 mx-auto">
             <div class="card animated fadeInDown">
                 <div class="card-body">
-                    <form action="/links/add" method="POST">
+                    <form action="/links/edit/{{ link.id }}" method="POST">
                         <div class="form-group">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="title" id="" placeholder="title" autofocus>
+                                <input type="text" class="form-control" name="title" id="" placeholder="title" value="{{ link.title }}" autofocus>
                             </div>
                             <div class="form-group">
-                                <input type="url" name="url" id="" class="form-control" placeholder="url">
+                                <input type="url" name="url" id="" class="form-control" value="{{ link.url }} "placeholder="url">
                             </div>
                             <div class="form-group">
-                                <textarea name="description" rows="2" class="form-control" placeholder="decription"></textarea>
+                                <textarea name="description" rows="2" class="form-control" placeholder="decription">{{ link.description }}</textarea>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-success btn-block">Save</button>
+                                <button class="btn btn-primary btn-block">Edit</button>
                             </div>
                         </div>
                     </form>

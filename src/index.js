@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 // initializations
 const app = express();
@@ -22,9 +24,11 @@ app.set('view engine', '.hbs');
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(flash());
 
 // global variables
 app.use((req, res, next)=>{
+    app.locals.success = req.flash('success');
     next();
 });
 
@@ -40,3 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.listen(app.get('port'), ()=>{
     console.log('server on port ', app.get('port'));
 });
+
+
+// min 2:00:00 Video del crud
+// https://www.youtube.com/watch?v=qJ5R9WTW0_E
