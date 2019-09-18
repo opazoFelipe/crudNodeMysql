@@ -33,15 +33,16 @@ app.use(session({
     store: new MySqlStore(database)
 }));
 app.use(morgan('dev'));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
 // global variables
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
     app.locals.success = req.flash('success');
+    app.locals.message = req.flash('message');
     next();
 });
 
@@ -54,10 +55,10 @@ app.use('/links', require('./routes/links'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // starting the server
-app.listen(app.get('port'), ()=>{
+app.listen(app.get('port'), () => {
     console.log('server on port ', app.get('port'));
 });
 
 
-// min 2:32:00 Video del crud
+// min 2:11:00 Video del crud
 // https://www.youtube.com/watch?v=qJ5R9WTW0_E
